@@ -413,5 +413,30 @@ namespace SongBrowser.DataAccess
                 Logger.Exception("Exception refreshing song list:", e);
             }
         }
+
+        public void ProcessButtonControls()
+        {
+            //pageup and pagedown in the song list when face buttons on the controllers are pressed
+            if (this.LevelSelectionNavigationController != null && this.LevelSelectionNavigationController.isActiveAndEnabled)
+            {
+                //todo: make this not hardcoded to using oculus button ids
+                if (Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.JoystickButton2))
+                {
+                    if (TableViewPageDownButton != null)
+                    {
+                        TableViewPageDownButton.onClick.Invoke();
+                    }
+
+                }
+
+                if (Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.JoystickButton3))
+                {
+                    if (TableViewPageUpButton != null)
+                    {
+                        TableViewPageUpButton.onClick.Invoke();
+                    }
+                }
+            }
+        }
     }
 }

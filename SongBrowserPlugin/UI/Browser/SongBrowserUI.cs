@@ -1461,5 +1461,13 @@ namespace SongBrowser.UI
 
             return false;
         }
+
+        public void Update()
+        {
+            if (_beatUi != null)
+            {
+                _beatUi.ProcessButtonControls();
+            }
+        }
     }
 }
